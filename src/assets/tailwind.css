@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Deep Blue: #002366
+Neon Green: #00FF00
+Dark Gray: #333333
+White: #FFFFFF
+Electric Purple: #FF00FF
+Silver: #C0C0C0 */
+
+.bot-icon {
+  box-shadow: #00ff00 0px 0px 10px 5px !important;
+  transition: all 0.3s ease;
+}
+
+.bot-icon:hover {
+  box-shadow: #ff00ff 0px 0px 10px 5px !important;
+  transform: scale(0.8);
+  transition: transform 0.3s;
+  animation: discoColor 1s infinite;
+}
+
+@keyframes discoColor {
+  0% {
+    border: 1px solid #002366;
+  }
+  25% {
+    border: 1px solid #00ff00;
+  }
+  50% {
+    border: 1px solid #333333;
+  }
+  75% {
+    border: 1px solid #ff00ff;
+  }
+  100% {
+    border: 1px solid #c0c0c0;
+  }
+}
