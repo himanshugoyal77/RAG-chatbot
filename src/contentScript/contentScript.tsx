@@ -42,20 +42,35 @@ const ContentScript = () => {
     }
   });
 
-  useEffect(() => {
-    if (!isYoutube && !videoId) return;
-    const getTranscript = useCallback(async () => {
-      YoutubeTranscript.fetchTranscript(videoId)
-        .then((res) =>
-          res.forEach((item) => setTranscript((prev) => [...prev, item.text]))
-        )
-        .catch((err) => console.log(err));
-    }, [videoId]);
+  const getTranscript = useCallback(async () => {
+    YoutubeTranscript.fetchTranscript(videoId)
+      .then((res) =>
+        res.forEach((item) => setTranscript((prev) => [...prev, item.text]))
+      )
+      .catch((err) => console.log(err));
+  }, [videoId]);
 
-    console.log("getTranscript", getTranscript);
+  useEffect(() => {
+    if (!isYoutube) return;
 
     getTranscript();
+    console.log("getTranscript", transcript);
   }, [videoId]);
+
+  // useEffect(() => {
+  //   if (!isYoutube && !videoId) return;
+  //   const getTranscript = useCallback(async () => {
+  //     YoutubeTranscript.fetchTranscript(videoId)
+  //       .then((res) =>
+  //         res.forEach((item) => setTranscript((prev) => [...prev, item.text]))
+  //       )
+  //       .catch((err) => console.log(err));
+  //   }, [videoId]);
+
+  //   console.log("getTranscript", getTranscript);
+
+  //   getTranscript();
+  // }, [videoId]);
 
   const handleDragStart = (event) => {
     event.preventDefault();
@@ -114,7 +129,11 @@ const ContentScript = () => {
           }}
           className="ext-w-[400px] ext-fixed ext-bottom-3 ext-right-5 ext-flex ext-h-[60vh] ext-items-center ext-justify-center ext-rounded-2xl ext-md:bottom-10 ext-md:right-10 ext-md:h-[70vh] ext-md:w-[30%]"
         >
-          <BotModel toggleModel={toggleModel} />
+          <BotModel
+            toggleModel={toggleModel}
+            transcript={transcript.join(" ")}
+            videoId={videoId}
+          />
         </div>
       )}
     </>

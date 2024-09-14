@@ -9,7 +9,7 @@ import SummaryComponent from "./SummaryComponent";
 import ChatComponent from "./ChatComponent";
 import "../../assets/tailwind.css";
 
-function BotModel({ toggleModel }) {
+function BotModel({ toggleModel, transcript, videoId }) {
   const [currentTab, setCurrentTab] = useState("chat");
   console.log("BotModel");
   function summaryModule() {
@@ -26,8 +26,12 @@ function BotModel({ toggleModel }) {
     ext-rounded-2xl ext-md:h-[70vh] ext-md:w-[100%]"
     >
       <div className="w-[87%] md:w-[90%] ext-flex-grow">
-        {currentTab === "summary" && <SummaryComponent />}
-        {currentTab === "chat" && <ChatComponent />}
+        {currentTab === "summary" && (
+          <SummaryComponent transcript={transcript} videoId={videoId} />
+        )}
+        {currentTab === "chat" && (
+          <ChatComponent transcript={transcript} videoId={videoId} />
+        )}
       </div>
       <div
         className="
