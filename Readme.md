@@ -1,6 +1,3 @@
-# ReactJS Chrome Extension
+# demo
 
-## React 18 and TailwindCSS Supported
-
-- [x] Webpack Compatible
-- [x] TailwindCSS 3.0 Compatible
+https://youtu.be/pCB1Eue2jz4?si=jfOJ9g0BahBMW4DP
